@@ -1,0 +1,24 @@
+@import 'styles/_variables.scss';
+
+@mixin button-color($color) {
+  background: $color;
+
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.button--white {
+  @include button-color($white);
+}
+
+.button--inline {
+  border: none;
+  padding: 1em;
+}

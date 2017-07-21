@@ -1,0 +1,77 @@
+@import 'styles/_variables.scss';
+
+.widget {
+  border: 1px solid $green;
+}
+
+.widget__name {
+  margin: 0;
+  text-align: center;
+}
+
+.widget__icon {
+  //margin: 1em 0;
+}
+
+.widget__settings {
+
+}
+
+.widget__expand {
+
+  &--closed {
+
+  }
+}
+
+.widget_close {
+
+}
+
+.widget__title,
+.widget__options {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+
+  > li {
+    padding: 0 0.5em;
+  }
+
+  > li:last-child {
+    padding-right: 0;
+  }
+}
+
+.widget__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid $grey;
+  padding: 0.5em 0;
+
+  .widget__title {
+    padding-left: 1em;
+    align-items: center;
+  }
+
+  .widget__options {
+    padding-right: 1em;
+    align-items: center;
+  }
+
+  .widget__icon {
+    vertical-align: middle;
+  }
+}
+
+.widget__body {
+
+  &--minimized {
+  }
+
+  &--expanded {
+  }
+}
