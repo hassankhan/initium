@@ -11,6 +11,14 @@ $spotify-green: #2fd566;
     color: $white;
   }
 
+  .widget__header {
+    border-bottom: 1px solid $spotify-green;
+  }
+
+  .widget__icon {
+    color: $spotify-green;
+  }
+
   .button {
     color: $white;
 
@@ -27,7 +35,7 @@ $spotify-green: #2fd566;
 
 .spotify__container {
   position: relative;
-  padding-bottom: 100%;
+  padding-bottom: 100vh;
   //height: 0;
   //overflow: hidden;
   //max-width: 100%;

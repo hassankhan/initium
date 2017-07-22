@@ -2,8 +2,7 @@ import * as ReactGridLayout from 'react-grid-layout';
 
 import { TYPES } from '../actions/layouts';
 
-import { Action } from '../types/redux';
-import { StartDragAction, StopDragAction } from '../actions/layouts';
+import { DragAction, LayoutsAction } from '../actions/layouts';
 
 export type State = ReactGridLayout.Layout[];
 
@@ -26,16 +25,27 @@ const initialState: State = [
   },
 ];
 
-const layouts = (state: State = initialState, action: Action) => {
+const layouts = (state: State = initialState, action: DragAction | LayoutsAction) => {
+
   switch (action.type) {
 
-    case TYPES.DRAG_ITEM_START:
-      const startDragAction = action as StartDragAction;
-      return startDragAction.payload.layout;
+    case TYPES.LAYOUTS_CHANGE: {
+      console.log(state);
+      console.log(action.payload);
+      return action.payload;
+    }
 
-    case TYPES.DRAG_ITEM_STOP:
-      const stopDragAction = action as StopDragAction;
-      return stopDragAction.payload.layout;
+    case TYPES.DRAG_ITEM: {
+      return state;
+    }
+
+    case TYPES.DRAG_ITEM_START: {
+      return state;
+    }
+
+    case TYPES.DRAG_ITEM_STOP: {
+      return state;
+    }
 
     default:
       return state;
