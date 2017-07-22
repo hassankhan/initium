@@ -19,7 +19,7 @@ const Button: React.SFC<ButtonProps> = (props) => {
   return (
     <button className={className} onClick={props.onClick}>{props.children}</button>
   );
-}
+};
 
 Button.defaultProps = {
   color: 'white',

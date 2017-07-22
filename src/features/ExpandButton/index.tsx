@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as Icon from 'react-fontawesome';
-import { VelocityComponent } from 'velocity-react'
+import { VelocityComponent } from 'velocity-react';
 
 import Button from '../../components/Button';
 

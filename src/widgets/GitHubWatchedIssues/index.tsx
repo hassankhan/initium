@@ -1,9 +1,11 @@
 /// <reference path='../../types/velocity-react.d.ts' />
 
+import * as _ from 'lodash';
 import * as React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
 
 import Widget from '../../components/Widget';
+import GitHubWatchedIssue from './GitHubWatchedIssue';
 
 // import './styles.css';
 
@@ -18,7 +20,10 @@ interface GitHubWatchedIssuesState {
   isExpanded: boolean;
 }
 
-const text = 'Now that we know who you are, I know who I am. I\'m not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain\'s going to be? He\'s the exact opposite of the hero. And most times they\'re friends, like you and me! I should\'ve known way back when... You know why, David? Because of the kids. They called me Mr Glass.';
+// const text = 'Now that we know who you are, I know who I am. I\'m not a mistake! It all makes sense! In a comic, you '
+//   + 'know how you can tell who the arch-villain\'s going to be? He\'s the exact opposite of the hero. And most times'
+//   + ' they\'re friends, like you and me! I should\'ve known way back when... You know why, David? Because of the '
+//   + 'kids. They called me Mr Glass.';
 
 export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIssuesProps, GitHubWatchedIssuesState> {
 
@@ -40,14 +45,12 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
     this.setState({
       isExpanded : true,
     });
-    console.log('EXPANDED!');
   }
 
   handleMinimize = () => {
     this.setState({
       isExpanded : false,
     });
-    console.log('MINIMIZED!');
   }
 
   render() {
@@ -58,18 +61,26 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
         return null;
       }
 
+      const elements = _.map([{
+        title : 'One',
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        title : 'Two',
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }], (item) => {
+
+        return (<GitHubWatchedIssue {...item} />);
+      });
+
       const bodyClass = isExpanded
         ? 'widget__body--expanded'
         : 'widget__body--minimized';
 
       return (
         <Widget.Body className={bodyClass}>
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
+          {elements}
         </Widget.Body>
       );
     };
