@@ -89,13 +89,13 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
       return elements;
     };
 
-    let bodyClass = 'github-issues widget__body ';
+    let bodyClass = 'widget__body github-issues__list ';
     bodyClass += this.state.isExpanded
       ? 'widget__body--expanded'
       : 'widget__body--minimized';
 
     return (
-      <Widget>
+      <Widget className="github-issues">
         <Widget.Header>
           <Widget.HeaderTitle icon="github" name="GitHub Watched Issues" />
           <Widget.HeaderOptions

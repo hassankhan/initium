@@ -23,6 +23,8 @@ export const HeaderTitle: React.SFC<WidgetHeaderTitleProps> = (props) => {
   );
 };
 
+HeaderTitle.displayName = 'WidgetHeaderTitle';
+
 export interface WidgetHeaderOptionsProps {
   animation: {
     duration?: number;
@@ -52,6 +54,8 @@ export const HeaderOptions: React.SFC<WidgetHeaderOptionsProps> = (props) => {
   );
 };
 
+HeaderOptions.displayName = 'WidgetHeaderOptions';
+
 interface WidgetHeaderProps {
   children: React.ReactNode;
 }
@@ -65,3 +69,5 @@ export const Header: React.SFC<WidgetHeaderProps> = (props) => {
     </header>
   );
 };
+
+Header.displayName = 'WidgetHeader';

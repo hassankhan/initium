@@ -11,7 +11,7 @@ interface ButtonProps {
 
 const Button: React.SFC<ButtonProps> = (props) => {
 
-  let className = `button button--${props.color} `;
+  let className = `button ${props.color ? `button--${props.color}` : ''} `;
   className += props.inline
     ? 'button--inline'
     : '';
@@ -22,7 +22,7 @@ const Button: React.SFC<ButtonProps> = (props) => {
 };
 
 Button.defaultProps = {
-  color: 'white',
+  color: '',
   inline: false,
 };
 

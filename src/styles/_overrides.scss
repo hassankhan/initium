@@ -1,3 +1,5 @@
+@import '_variables.scss';
+
 .react-grid-item > .react-resizable-handle {
 
   background: none;
@@ -5,7 +7,15 @@
   &::after {
     content: '\f065';
     font-family: 'FontAwesome';
+    font-size: 0.8em;
     transform: rotateY(180deg);
     display: block;
+    position: absolute;
+    bottom: 1px;
+    right: 4px;
   }
+}
+
+.react-grid-item.react-grid-placeholder {
+  //background-color: $green;
 }

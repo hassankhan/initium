@@ -1,6 +1,33 @@
+@import 'styles/_variables.scss';
+
+$spotify-grey: #282828;
+$spotify-green: #2fd566;
+
+.spotify {
+  background-color: $spotify-grey;
+  color: $white;
+
+  & + .react-resizable-handle::after {
+    color: $white;
+  }
+
+  .button {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $spotify-green;
+    }
+
+    &:focus {
+      outline-color: $spotify-green;
+    }
+  }
+}
+
 .spotify__container {
-  //position: relative;
-  //padding-bottom: 56.25%;
+  position: relative;
+  padding-bottom: 100%;
   //height: 0;
   //overflow: hidden;
   //max-width: 100%;
@@ -10,10 +37,10 @@
   width: 100%;
   height: 100%;
   border: none;
-  padding: 1em 0;
-  //position: absolute;
-  //top: 0;
-  //left: 0;
+  //padding: 1em 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   //width: 100%;
   //height: 100%;
 }

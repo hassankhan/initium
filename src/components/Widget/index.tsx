@@ -7,7 +7,6 @@ import './styles.css';
 
 interface WidgetProps {
   className?: string;
-  style?: React.CSSProperties;
 }
 
 class Widget extends React.Component<WidgetProps, {}> {
@@ -20,7 +19,7 @@ class Widget extends React.Component<WidgetProps, {}> {
 
   render() {
     return (
-      <div className="widget">
+      <div className={`widget ${this.props.className}`}>
         {this.props.children}
       </div>
     );

@@ -71,7 +71,7 @@ export default class Spotify extends React.Component<SpotifyProps, SpotifyState>
       : 'widget__body--minimized';
 
     return (
-      <Widget>
+      <Widget className="spotify">
         <Widget.Header>
           <Widget.HeaderTitle icon="spotify" name="Spotify" />
           <Widget.HeaderOptions
