@@ -4,7 +4,12 @@ import Body from './Body';
 import { Header, HeaderOptions, HeaderTitle } from './Header';
 import './styles.css';
 
-class Widget extends React.Component<{}, {}> {
+interface WidgetProps {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+class Widget extends React.Component<WidgetProps, {}> {
 
   static Body = Body;
   static Header = Header;

@@ -9,21 +9,20 @@ import GitHubWatchedIssue from './GitHubWatchedIssue';
 
 // import './styles.css';
 
-interface GitHubWatchedIssuesProps {
+interface GridItemProps {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+interface GitHubWatchedIssuesProps extends GridItemProps {
   animation: {
     duration?: number;
   };
-  // children: React.ReactNode;
 }
 
 interface GitHubWatchedIssuesState {
   isExpanded: boolean;
 }
-
-// const text = 'Now that we know who you are, I know who I am. I\'m not a mistake! It all makes sense! In a comic, you '
-//   + 'know how you can tell who the arch-villain\'s going to be? He\'s the exact opposite of the hero. And most times'
-//   + ' they\'re friends, like you and me! I should\'ve known way back when... You know why, David? Because of the '
-//   + 'kids. They called me Mr Glass.';
 
 export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIssuesProps, GitHubWatchedIssuesState> {
 
@@ -37,7 +36,7 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
     super(props);
 
     this.state = {
-      isExpanded : false,
+      isExpanded : true,
     };
   }
 
@@ -62,28 +61,30 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
       }
 
       const elements = _.map([{
-        title : 'One',
+        repository : 'serverless/serverless',
+        issue: 1,
         link : 'http://google.com',
         updatedAt: (new Date()).toISOString(),
       }, {
-        title : 'Two',
+        repository : 'serverless/serverless',
+        issue: 100,
         link : 'http://google.com',
         updatedAt: (new Date()).toISOString(),
       }], (item) => {
 
-        return (<GitHubWatchedIssue {...item} />);
+        return (<GitHubWatchedIssue key={`${item.repository}#${item.issue}`} {...item} />);
       });
 
-      const bodyClass = isExpanded
-        ? 'widget__body--expanded'
-        : 'widget__body--minimized';
-
       return (
-        <Widget.Body className={bodyClass}>
+        <Widget.Body>
           {elements}
         </Widget.Body>
       );
     };
+
+    const bodyClass = this.state.isExpanded
+      ? 'widget__body--expanded'
+      : 'widget__body--minimized';
 
     return (
       <Widget>
@@ -97,6 +98,7 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
           />
         </Widget.Header>
         <VelocityTransitionGroup
+          className={bodyClass}
           component="section"
           enter={{animation: 'slideDown', duration: this.props.animation.duration, style: {height: ''}}}
           leave={{animation: 'slideUp', duration: this.props.animation.duration}}

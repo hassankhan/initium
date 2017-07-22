@@ -4,7 +4,7 @@ import './styles.css';
 
 interface WidgetBodyProps {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 
 function Body(props: WidgetBodyProps) {
