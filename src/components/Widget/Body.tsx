@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './styles.css';
-
 interface WidgetBodyProps {
   children: React.ReactNode;
   className?: string;

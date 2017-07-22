@@ -8,16 +8,24 @@ export type State = ReactGridLayout.Layout[];
 
 const initialState: State = [
   {
-    x: 1,
-    y: 1,
+    x: 0,
+    y: 0,
     w: 4,
     h: 7,
-    minW: 4,
+    minW: 3,
     i: 'GitHubWatchedIssues',
   },
   {
-    x: 7,
-    y: 1,
+    x: 4,
+    y: 0,
+    w: 4,
+    h: 7,
+    minW: 3,
+    i: 'Today',
+  },
+  {
+    x: 9,
+    y: 0,
     w: 4,
     h: 7,
     // maxH: 9,

@@ -7,12 +7,11 @@ import * as ReactGridLayout from 'react-grid-layout';
 import * as LayoutsActions from '../../actions/layouts';
 
 import Spotify from '../../widgets/Spotify';
+import Today from '../../widgets/Today';
 import GitHubWatchedIssues from '../../widgets/GitHubWatchedIssues';
 import asGridItem from '../../features/asGridItem';
 import { RootState } from '../../reducers/index';
 import { LayoutChangeCallback } from '../../types/react-grid-layout';
-
-import './styles.css';
 
 const animation = {
   duration : 1000,
@@ -59,22 +58,27 @@ class App extends React.Component<Props & StateProps, State> {
 
     const GitHubWidget = asGridItem(<GitHubWatchedIssues animation={animation} />);
     const SpotifyWidget = asGridItem(<Spotify animation={animation} />);
+    const TodayWidget = asGridItem(<Today animation={animation} />);
 
     return (
       <div className="app">
         <header className="header">
           <h2>Welcome to Initium</h2>
         </header>
-        <Grid
-          layout={this.props.layouts}
-          rowHeight={52}
-          onLayoutChange={this.props.onLayoutChange}
-        >
-          {/*onDrag={this.props.onDrag}*/}
-          {/*onDragStart={this.props.onDragStart}*/}
-          <GitHubWidget key="GitHubWatchedIssues" />
-          <SpotifyWidget key="Spotify" />
-        </Grid>
+        <section className="layout">
+          <Grid
+            className="layout__grid"
+            layout={this.props.layouts}
+            rowHeight={52}
+            onLayoutChange={this.props.onLayoutChange}
+          >
+            {/*onDrag={this.props.onDrag}*/}
+            {/*onDragStart={this.props.onDragStart}*/}
+            <GitHubWidget key="GitHubWatchedIssues" />
+            <SpotifyWidget key="Spotify" />
+            <TodayWidget key="Today" />
+          </Grid>
+        </section>
       </div>
     );
   }

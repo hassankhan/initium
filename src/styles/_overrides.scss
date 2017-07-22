@@ -16,6 +16,15 @@
   }
 }
 
+.react-grid-item.resizing {
+  cursor: nesw-resize;
+}
+
 .react-grid-item.react-grid-placeholder {
-  //background-color: $green;
+  background: $green;
+  border: 5px dashed $black;
+}
+
+.react-grid-item.react-draggable-dragging {
+  cursor: move;
 }

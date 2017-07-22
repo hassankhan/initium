@@ -15,7 +15,7 @@ interface State {
   isExpanded: boolean;
 }
 
-export default class Spotify extends React.Component<Props, State> {
+export default class Today extends React.Component<Props, State> {
 
   static defaultProps: Partial<Props> = {
     animation: {
@@ -52,13 +52,8 @@ export default class Spotify extends React.Component<Props, State> {
       }
 
       return (
-        <div className="spotify__container">
-          <iframe
-            className="spotify__embed"
-            src="https://open.spotify.com/embed/user/1115661994/playlist/7lWPxLSqVEvKMb9xx4ThuB"
-            frameBorder={0}
-            allowTransparency={true}
-          />{/**/}
+        <div className="today__container">
+
         </div>
       );
     };
@@ -69,9 +64,9 @@ export default class Spotify extends React.Component<Props, State> {
       : 'widget__body--minimized';
 
     return (
-      <Widget className="spotify">
+      <Widget className="today">
         <Widget.Header>
-          <Widget.HeaderTitle icon="spotify" name="Spotify" />
+          <Widget.HeaderTitle icon="clock-o" name="Today" />
           <Widget.HeaderOptions
             animation={this.props.animation}
             isExpanded={this.state.isExpanded}

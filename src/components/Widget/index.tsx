@@ -3,7 +3,6 @@ import * as React from 'react';
 import Body from './Body';
 import { Header, HeaderOptions, HeaderTitle } from './Header';
 import Footer from './Footer';
-import './styles.css';
 
 interface WidgetProps {
   className?: string;

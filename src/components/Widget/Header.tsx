@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as Icon from 'react-fontawesome';
 
-import './styles.css';
 import Button from '../Button';
 import ExpandButton from '../../features/ExpandButton';
 

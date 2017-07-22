@@ -1,7 +1,5 @@
-@import 'styles/_variables.scss';
-
 .github-issues {
-
+  background: $white;
 }
 
 .github-issues__list {
@@ -23,9 +21,11 @@
 }
 
 .github-issue__name {
-  flex: 2;
+  flex: 3;
+  font-size: 0.875em;
 }
 
 .github-issue__date {
-  flex: 1;
+  flex: 2;
+  flex-basis: auto;
 }

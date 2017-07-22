@@ -8,8 +8,6 @@ import Widget from '../../components/Widget';
 import GitHubWatchedIssue from './GitHubWatchedIssue';
 // import ResizeButton from "../../features/ResizeButton/index";
 
-import './styles.css';
-
 interface GitHubWatchedIssuesProps {
   animation: {
     duration?: number;

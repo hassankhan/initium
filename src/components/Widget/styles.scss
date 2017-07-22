@@ -1,8 +1,7 @@
-@import 'styles/_variables.scss';
-
 .widget {
-  border: 1px solid $green;
+  border: 2px solid $green;
   height: inherit;
+  box-shadow: 1px 1px 6px 1px $black;
 }
 
 .widget__name {
@@ -56,6 +55,11 @@
   .widget__title {
     padding-left: 1em;
     align-items: center;
+  }
+
+  .widget__name {
+    max-height: 35px;
+    overflow: hidden;
   }
 
   .widget__options {

@@ -1,8 +1,6 @@
 import * as moment from 'moment';
 import * as React from 'react';
 
-import './styles.css';
-
 interface GitHubWatchedIssueProps {
   style?: React.CSSProperties;
   repository: string;

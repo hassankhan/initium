@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './styles.css';
-
 interface ButtonProps {
   children?: React.ReactNode;
   color?: string;
