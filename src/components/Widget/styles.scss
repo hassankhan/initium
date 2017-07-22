@@ -70,9 +70,23 @@
 
 .widget__body {
 
+  overflow: scroll;
+  height: calc(100% - #{$widgetHeaderHeight});
+
   &--minimized {
   }
 
   &--expanded {
+    //height: calc(100% - 52px);
+  }
+}
+
+
+.widget__footer {
+  display: flex;
+  justify-content: flex-end;
+
+  .widget__resize {
+    //align-self: flex-end;
   }
 }

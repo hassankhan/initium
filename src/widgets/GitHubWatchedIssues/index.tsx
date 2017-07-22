@@ -6,15 +6,11 @@ import { VelocityTransitionGroup } from 'velocity-react';
 
 import Widget from '../../components/Widget';
 import GitHubWatchedIssue from './GitHubWatchedIssue';
+// import ResizeButton from "../../features/ResizeButton/index";
 
-// import './styles.css';
+import './styles.css';
 
-interface GridItemProps {
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-interface GitHubWatchedIssuesProps extends GridItemProps {
+interface GitHubWatchedIssuesProps {
   animation: {
     duration?: number;
   };
@@ -70,19 +66,31 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
         issue: 100,
         link : 'http://google.com',
         updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 543,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 123,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 1232,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
       }], (item) => {
 
-        return (<GitHubWatchedIssue key={`${item.repository}#${item.issue}`} {...item} />);
+        return (<li key={`${item.repository}#${item.issue}`}><GitHubWatchedIssue {...item} /></li>);
       });
 
-      return (
-        <Widget.Body>
-          {elements}
-        </Widget.Body>
-      );
+      return elements;
     };
 
-    const bodyClass = this.state.isExpanded
+    let bodyClass = 'github-issues widget__body ';
+    bodyClass += this.state.isExpanded
       ? 'widget__body--expanded'
       : 'widget__body--minimized';
 
@@ -97,17 +105,18 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
             onMinimize={this.handleMinimize}
           />
         </Widget.Header>
-        <VelocityTransitionGroup
-          className={bodyClass}
-          component="section"
-          enter={{animation: 'slideDown', duration: this.props.animation.duration, style: {height: ''}}}
-          leave={{animation: 'slideUp', duration: this.props.animation.duration}}
-        >
-          {renderBody(this.state.isExpanded)}
-        </VelocityTransitionGroup>
-        {}
-        {/*<Widget.Title>GitHub Activity</Widget.Title>*/}
-        {/*<p>Hello</p>*/}
+        <Widget.Body className={bodyClass}>
+          <VelocityTransitionGroup
+            component="ul"
+            enter={{animation: 'slideDown', duration: this.props.animation.duration, style: {height: ''}}}
+            leave={{animation: 'slideUp', duration: this.props.animation.duration}}
+          >
+            {renderBody(this.state.isExpanded)}
+          </VelocityTransitionGroup>
+        </Widget.Body>
+        {/*<Widget.Footer>*/}
+          {/*<ResizeButton isResizing={false}/>*/}
+        {/*</Widget.Footer>*/}
       </Widget>
     );
   }

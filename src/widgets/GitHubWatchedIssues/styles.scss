@@ -1,0 +1,27 @@
+@import 'styles/_variables.scss';
+
+.github-issues {
+
+  ul {
+    margin: 0;
+    padding: 0 1em;
+    list-style: none;
+  }
+
+  li {
+    border-bottom: 1px solid $grey;
+  }
+}
+
+.github-issue {
+  display: flex;
+  align-items: center;
+}
+
+.github-issue__name {
+  flex: 2;
+}
+
+.github-issue__date {
+  flex: 1;
+}

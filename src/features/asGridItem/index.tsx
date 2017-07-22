@@ -7,7 +7,7 @@ interface SimpleTileProps {
   style?: React.CSSProperties;
 }
 
-const asGridItem = (Component: any) => {
+const asGridItem = (Component: JSX.Element) => {
 
   return class extends React.Component<SimpleTileProps> {
 

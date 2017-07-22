@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Body from './Body';
 import { Header, HeaderOptions, HeaderTitle } from './Header';
+import Footer from './Footer';
 import './styles.css';
 
 interface WidgetProps {
@@ -15,6 +16,7 @@ class Widget extends React.Component<WidgetProps, {}> {
   static Header = Header;
   static HeaderOptions = HeaderOptions;
   static HeaderTitle = HeaderTitle;
+  static Footer = Footer;
 
   render() {
     return (

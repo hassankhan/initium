@@ -2,6 +2,7 @@
 import * as React from 'react';
 import * as ReactGridLayout from 'react-grid-layout';
 
+import Spotify from './widgets/Spotify';
 import GitHubWatchedIssues from './widgets/GitHubWatchedIssues';
 import asGridItem from './features/asGridItem';
 // import Widget from './components/Widget';
@@ -55,8 +56,9 @@ class App extends React.Component<AppProps, AppState> {
         x: 7,
         y: 1,
         w: 4,
-        h: 2,
-        i: 'GitHubWatchedIssues2',
+        h: 1,
+        maxH: 2,
+        i: 'Spotify',
       },
     ];
   }
@@ -66,16 +68,16 @@ class App extends React.Component<AppProps, AppState> {
     const Grid = ReactGridLayout.WidthProvider(ReactGridLayout);
 
     const GitHubWidget = asGridItem(<GitHubWatchedIssues animation={animation} />);
-    const GitHubWidget2 = asGridItem(<GitHubWatchedIssues animation={animation} />);
+    const SpotifyWidget = asGridItem(<Spotify animation={animation} />);
 
     return (
       <div className="app">
         <header className="header">
           <h2>Welcome to Initium</h2>
         </header>
-        <Grid layout={this.state.layout}>
+        <Grid layout={this.state.layout} rowHeight={52}>
           <GitHubWidget key="GitHubWatchedIssues" />
-          <GitHubWidget2 key="GitHubWatchedIssues2" />
+          <SpotifyWidget key="Spotify" />
         </Grid>
       </div>
     );

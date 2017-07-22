@@ -1,10 +1,10 @@
+import * as moment from 'moment';
 import * as React from 'react';
 
-// import './styles.css';
+import './styles.css';
 
-
-
-interface GitHubWatchedIssueProps{
+interface GitHubWatchedIssueProps {
+  style?: React.CSSProperties;
   repository: string;
   issue: number;
   link: string;
@@ -15,9 +15,9 @@ function GitHubWatchedIssue(props: GitHubWatchedIssueProps) {
   const link = `https://github.com/${props.repository}/issues/${props.issue}`;
 
   return (
-    <section>
-      <a href={link}><h3 className="">{props.repository}#{props.issue}</h3></a>
-      <p>Last Updated At: {props.updatedAt}</p>
+    <section style={props.style} className="github-issue">
+      <a className="github-issue__name" href={link}><h3>{props.repository}#{props.issue}</h3></a>
+      <p className="github-issue__date">Last updated {moment(props.updatedAt).fromNow()}</p>
     </section>
   );
 }
