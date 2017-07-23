@@ -2,8 +2,27 @@
 
 import * as React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
+import { connect, Dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
 import Widget from '../../components/Widget';
+import { RootState } from '../../reducers';
+import { State as AppState } from '../../reducers/app';
+
+import { WeatherResult } from '../../types/openweather';
+
+import * as TodayActions from './actions';
+import { State as TodayState } from './reducer';
+
+interface ReduxState {
+  app: AppState;
+  today: TodayState;
+}
+
+interface ReduxProps {
+  getWeather: () => ThunkAction<Promise<WeatherResult>, RootState, null>;
+}
 
 interface Props {
   animation: {
@@ -15,15 +34,18 @@ interface State {
   isExpanded: boolean;
 }
 
-export default class Today extends React.Component<Props, State> {
+// type CombinedProps = ReduxState & ReduxProps & Props;
+type CombinedProps = ReduxState & ReduxProps & Props;
 
-  static defaultProps: Partial<Props> = {
+class Today extends React.Component<CombinedProps, State> {
+
+  static defaultProps: Partial<CombinedProps> = {
     animation: {
       duration: 2000,
     },
   };
 
-  constructor(props: Props) {
+  constructor(props: CombinedProps) {
     super(props);
 
     this.state = {
@@ -51,11 +73,7 @@ export default class Today extends React.Component<Props, State> {
         return null;
       }
 
-      return (
-        <div className="today__container">
-
-        </div>
-      );
+      return null;
     };
 
     let bodyClass = 'widget__body ';
@@ -86,3 +104,22 @@ export default class Today extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = (state: RootState): ReduxState => {
+  return {
+    app   : state.app,
+    today : state.today,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<RootState>): ReduxProps => {
+
+  return bindActionCreators({
+    getWeather : TodayActions.getWeather,
+  }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Today);
