@@ -1,27 +1,35 @@
 // import * as _ from 'lodash';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { connect, Dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as ReactGridLayout from 'react-grid-layout';
 
 import * as LayoutsActions from '../../actions/layouts';
+import { RootState } from '../../reducers/index';
+import { State as AppState } from '../../reducers/app';
+import { State as LayoutsState } from '../../reducers/layouts';
+
+import asGridItem from '../../features/asGridItem';
 
 import Spotify from '../../widgets/Spotify';
-import Today from '../../widgets/Today';
+import Today from '../../widgets/today';
 import GitHubWatchedIssues from '../../widgets/GitHubWatchedIssues';
-import asGridItem from '../../features/asGridItem';
-import { RootState } from '../../reducers/index';
+
 import { LayoutChangeCallback } from '../../types/react-grid-layout';
 
 const animation = {
   duration : 1000,
 };
 
-interface StateProps {
-  layouts: ReactGridLayout.Layout[];
-  onDrag: ReactGridLayout.ItemCallback;
-  onDragStart: ReactGridLayout.ItemCallback;
-  onDragStop: ReactGridLayout.ItemCallback;
+interface ReduxState {
+  app: AppState;
+  layouts: LayoutsState;
+}
+
+interface ReduxProps {
+  // onDrag: ReactGridLayout.ItemCallback;
+  // onDragStart: ReactGridLayout.ItemCallback;
+  // onDragStop: ReactGridLayout.ItemCallback;
   onLayoutChange: LayoutChangeCallback;
 }
 
@@ -37,17 +45,18 @@ interface State {
   layout: ReactGridLayout.Layout[];
 }
 
-class App extends React.Component<Props & StateProps, State> {
+type CombinedProps = ReduxState & ReduxProps & Props;
 
-  static defaultProps: Partial<Props & StateProps> = {
+class App extends React.Component<CombinedProps, State> {
+
+  static defaultProps: Partial<CombinedProps> = {
     className: 'layout',
     cols: 12,
     rowHeight: 50,
-    onLayoutChange: () => { return; },
     verticalCompact: true,
   };
 
-  shouldComponentUpdate(nextProps: Props & StateProps, nextState: State) {
+  shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     // console.log(!_.isEqual(nextProps.layouts, this.props.layouts))
     return false;
   }
@@ -58,7 +67,7 @@ class App extends React.Component<Props & StateProps, State> {
 
     const GitHubWidget = asGridItem(<GitHubWatchedIssues animation={animation} />);
     const SpotifyWidget = asGridItem(<Spotify animation={animation} />);
-    const TodayWidget = asGridItem(<Today animation={animation} />);
+    const TodayWidget = asGridItem(<Today />);
 
     return (
       <div className="app">
@@ -72,8 +81,6 @@ class App extends React.Component<Props & StateProps, State> {
             rowHeight={52}
             onLayoutChange={this.props.onLayoutChange}
           >
-            {/*onDrag={this.props.onDrag}*/}
-            {/*onDragStart={this.props.onDragStart}*/}
             <GitHubWidget key="GitHubWatchedIssues" />
             <SpotifyWidget key="Spotify" />
             <TodayWidget key="Today" />
@@ -84,13 +91,14 @@ class App extends React.Component<Props & StateProps, State> {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = (state: RootState): ReduxState => {
   return {
-    layouts: state.layouts,
+    app     : state.app,
+    layouts : state.layouts,
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<RootState>) => {
+const mapDispatchToProps = (dispatch: Dispatch<RootState>): ReduxProps => {
 
   return bindActionCreators({
     onLayoutChange : LayoutsActions.handleLayoutsChange,

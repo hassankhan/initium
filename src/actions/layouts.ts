@@ -25,7 +25,7 @@ export const handleLayoutsChange: LayoutChangeCallback = (
     type    : TYPES.LAYOUTS_CHANGE,
     payload : layout,
   };
-}
+};
 
 export interface DragAction extends Action {
   payload: DragPayload;
@@ -41,7 +41,7 @@ export const handleDragItem: ReactGridLayout.ItemCallback = (
     type : TYPES.DRAG_ITEM,
     payload : newItem,
   };
-}
+};
 
 export const handleStartDragItem: ReactGridLayout.ItemCallback = (
   layout,
@@ -56,7 +56,7 @@ export const handleStartDragItem: ReactGridLayout.ItemCallback = (
     type : TYPES.DRAG_ITEM_START,
     payload : newItem,
   };
-}
+};
 
 export const handleStopDragItem: ReactGridLayout.ItemCallback = (
   layout,
@@ -71,4 +71,4 @@ export const handleStopDragItem: ReactGridLayout.ItemCallback = (
     type : TYPES.DRAG_ITEM_STOP,
     payload : newItem,
   };
-}
+};

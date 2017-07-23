@@ -58,6 +58,6 @@ const layouts = (state: State = initialState, action: DragAction | LayoutsAction
     default:
       return state;
   }
-}
+};
 
 export default layouts;

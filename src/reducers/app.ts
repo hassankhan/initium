@@ -1,11 +1,15 @@
 import { Action } from '../types/redux';
 
 export interface State {
-  user?: {};
+  animation?: {
+    duration: number;
+  };
 }
 
 const initialState: Partial<State> = {
-  user : {},
+  animation: {
+    duration : 1000,
+  },
 };
 
 const app = (state: State = initialState, action: Action) => {
@@ -14,6 +18,6 @@ const app = (state: State = initialState, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 export default app;
