@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as React from 'react';
 import * as Icon from 'react-fontawesome';
 
@@ -10,10 +11,16 @@ interface WidgetHeaderTitleProps {
 }
 
 export const HeaderTitle: React.SFC<WidgetHeaderTitleProps> = (props) => {
+
+  const renderedIcon = _.endsWith(props.icon, '.svg')
+    ? <img draggable={false} src={props.icon} alt="Icon" title="Icon" />
+    : <Icon className="widget__icon" name={props.icon} size="2x" />;
+
+  // console.log(props.icon);
   return (
     <ul className="widget__title">
       <li>
-        <Icon className="widget__icon" name={props.icon} size="2x" />
+        {renderedIcon}
       </li>
       <li>
         <h3 className="widget__name">{props.name}</h3>
@@ -38,6 +45,7 @@ export const HeaderOptions: React.SFC<WidgetHeaderOptionsProps> = (props) => {
     <ul className="widget__options">
       <li>
         <ExpandButton
+          className="widget__expand"
           animation={props.animation}
           isExpanded={props.isExpanded}
           onShow={props.onExpand}
@@ -45,8 +53,8 @@ export const HeaderOptions: React.SFC<WidgetHeaderOptionsProps> = (props) => {
         />
       </li>
       <li>
-        <Button inline={true} onClick={(event: React.MouseEvent<HTMLButtonElement>) => { return; }}>
-          <li><Icon className="widget__settings" name="cog" /></li>
+        <Button className="widget__settings" inline={true} onClick={() => { return; }}>
+          <li><Icon name="cog" /></li>
         </Button>
       </li>
     </ul>

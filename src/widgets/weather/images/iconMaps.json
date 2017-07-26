@@ -1,0 +1,247 @@
+[
+  {
+    "code" : 0,
+    "text":	"tornado",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 1,
+    "text":	"tropical storm",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 2,
+    "text":	"hurricane",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 3,
+    "text":	"severe thunderstorms",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 4,
+    "text":	"thunderstorms",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 5,
+    "text":	"mixed rain and snow",
+    "image": "rainy-7.svg"
+  },
+  {
+    "code" : 6,
+    "text":	"mixed rain and sleet",
+    "image": "rainy-5.svg"
+  },
+  {
+    "code" : 7,
+    "text":	"mixed snow and sleet",
+    "image": "snowy-5.svg"
+  },
+  {
+    "code" : 8,
+    "text":	"freezing drizzle",
+    "image": "rainy-4.svg"
+  },
+  {
+    "code" : 9,
+    "text":	"drizzle",
+    "image": "rainy-4.svg"
+  },
+  {
+    "code" : 10,
+    "text":	"freezing rain",
+    "image": "rainy-7.svg"
+  },
+  {
+    "code" : 11,
+    "text":	"showers",
+    "image": "rainy-6.svg"
+  },
+  {
+    "code" : 12,
+    "text":	"showers",
+    "image": "rainy-6.svg"
+  },
+  {
+    "code" : 13,
+    "text":	"snow flurries",
+    "image": "snowy-5.svg"
+  },
+  {
+    "code" : 14,
+    "text":	"light snow showers",
+    "image": "snowy-4.svg"
+  },
+  {
+    "code" : 15,
+    "text":	"blowing snow",
+    "image": "snowy-6.svg"
+  },
+  {
+    "code" : 16,
+    "text":	"snow",
+    "image": "snowy-4.svg"
+  },
+  {
+    "code" : 17,
+    "text":	"hail",
+    "image": "rainy-6.svg"
+  },
+  {
+    "code" : 18,
+    "text":	"sleet",
+    "image": "rainy-6.svg"
+  },
+  {
+    "code" : 19,
+    "text":	"dust",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 20,
+    "text":	"foggy",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 21,
+    "text":	"haze",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 22,
+    "text":	"smoky",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 23,
+    "text":	"blustery",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 24,
+    "text":	"windy",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 25,
+    "text":	"cold",
+    "image": "cloudy-1.svg"
+  },
+  {
+    "code" : 26,
+    "text":	"cloudy",
+    "image": "cloudy.svg"
+  },
+  {
+    "code" : 27,
+    "text":	"mostly cloudy (night)",
+    "image": "cloudy-night-3.svg"
+  },
+  {
+    "code" : 28,
+    "text":	"mostly cloudy (day)",
+    "image": "cloudy-day-3.svg"
+  },
+  {
+    "code" : 29,
+    "text":	"partly cloudy (night)",
+    "image": "cloudy-night-2.svg"
+  },
+  {
+    "code" : 30,
+    "text":	"partly cloudy (day)",
+    "image": "cloudy-day-2.svg"
+  },
+  {
+    "code" : 31,
+    "text":	"clear (night)",
+    "image": "night.svg"
+  },
+  {
+    "code" : 32,
+    "text":	"sunny",
+    "image": "day.svg"
+  },
+  {
+    "code" : 33,
+    "text":	"fair (night)",
+    "image": "night.svg"
+  },
+  {
+    "code" : 34,
+    "text":	"fair (day)",
+    "image": "day.svg"
+  },
+  {
+    "code" : 35,
+    "text":	"mixed rain and hail",
+    "image": "rainy-7.svg"
+  },
+  {
+    "code" : 36,
+    "text":	"hot",
+    "image": "day.svg"
+  },
+  {
+    "code" : 37,
+    "text":	"isolated thunderstorms",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 38,
+    "text":	"scattered thunderstorms",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 39,
+    "text":	"scattered thunderstorms",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 40,
+    "text":	"scattered showers",
+    "image": "rainy-5.svg"
+  },
+  {
+    "code" : 41,
+    "text":	"heavy snow",
+    "image": "snowy-6.svg"
+  },
+  {
+    "code" : 42,
+    "text":	"scattered snow showers",
+    "image": "snowy-5.svg"
+  },
+  {
+    "code" : 43,
+    "text":	"heavy snow",
+    "image": "snowy-6.svg"
+  },
+  {
+    "code" : 44,
+    "text":	"partly cloudy",
+    "image": "cloudy.svg"
+  },
+  {
+    "code" : 45,
+    "text":	"thundershowers",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 46,
+    "text":	"snow showers",
+    "image": "snowy-5.svg"
+  },
+  {
+    "code" : 47,
+    "text":	"isolated thundershowers",
+    "image": "thunder.svg"
+  },
+  {
+    "code" : 3200,
+    "text":	"not available",
+    "image": "thunder.svg"
+  }
+]

@@ -4,12 +4,12 @@ import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../../reducers';
 
 import { Action } from '../../types/redux';
-import { WeatherResult } from '../../types/openweather';
+import { WeatherResult } from '../../types/yahoo-weather';
 
 export const TYPES = {
-  WEATHER_PENDING : '@@WIDGET/TODAY/WEATHER/PENDING',
-  WEATHER_SUCCESS : '@@WIDGET/TODAY/WEATHER/SUCCESS',
-  WEATHER_FAILURE : '@@WIDGET/TODAY/WEATHER/FAILURE',
+  WEATHER_PENDING : '@@WIDGET/WEATHER/PENDING',
+  WEATHER_SUCCESS : '@@WIDGET/WEATHER/SUCCESS',
+  WEATHER_FAILURE : '@@WIDGET/WEATHER/FAILURE',
 };
 
 interface WeatherAction extends Action {
@@ -18,18 +18,26 @@ interface WeatherAction extends Action {
 
 export const getWeather = (): ThunkAction<Promise<WeatherResult>, RootState, null> => {
 
-  return (dispatch: Dispatch<RootState>, getState: () => RootState): Promise<WeatherResult> => {
+  return (dispatch: Dispatch<RootState>): Promise<WeatherResult> => {
 
-    const API_KEY = 'b1b15e88fa797225412429c1c50c122a1';
+    dispatch({ type : TYPES.WEATHER_PENDING } as WeatherAction);
 
-    return fetch(`http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_KEY}`)
+    const yql = [
+      'select * from weather.forecast',
+      'where woeid in (select woeid from geo.places(1)',
+      'where text=\'london, uk\')',
+      'and u=\'c\''
+    ].join(' ');
+
+    return fetch(`https://query.yahooapis.com/v1/public/yql?q=${encodeURIComponent(yql)}&format=json`)
       .then((response) => {
+
         return response.json();
       })
       .then((json) => {
         dispatch({
           type    : TYPES.WEATHER_SUCCESS,
-          payload : json,
+          payload : json.query.results,
         } as WeatherAction);
 
         return json;

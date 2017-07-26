@@ -1,6 +1,7 @@
 @import "styles/_variables.scss";
 @import "styles/_global.scss";
 @import "styles/_overrides.scss";
+@import "styles/_mixins.scss";
 
 @import "components/Button/styles.scss";
 @import "components/Widget/styles.scss";
@@ -8,5 +9,6 @@
 @import "containers/App/styles.scss";
 
 @import "widgets/GitHubWatchedIssues/styles.scss";
+@import "widgets/hukd/styles.scss";
 @import "widgets/Spotify/styles.scss";
-@import "widgets/today/styles.scss";
+@import "widgets/weather/styles.scss";

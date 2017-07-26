@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface ButtonProps {
+  className?: string;
   children?: React.ReactNode;
   color?: string;
   inline?: boolean;
@@ -15,11 +16,12 @@ const Button: React.SFC<ButtonProps> = (props) => {
     : '';
 
   return (
-    <button className={className} onClick={props.onClick}>{props.children}</button>
+    <button className={`${className} ${props.className}`} onClick={props.onClick}>{props.children}</button>
   );
 };
 
 Button.defaultProps = {
+  className: '',
   color: '',
   inline: false,
 };

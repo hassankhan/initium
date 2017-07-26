@@ -1,39 +1,35 @@
-import { Action } from '../../types/redux';
-import { WeatherResult } from '../../types/openweather';
-
-import { TYPES } from './actions';
+import { HukdAction, TYPES } from './actions';
+import { HukdResult } from './types';
 
 export interface State {
   isFetching?: boolean;
   error?: Error;
-  weather?: WeatherResult;
+  deals?: HukdResult;
 }
 
 const initialState: Partial<State> = {
   isFetching : false,
-  error      : undefined,
-  weather    : undefined,
 };
 
-const today = (state: State = initialState, action: Action) => {
+const hukd = (state: State = initialState, action: HukdAction) => {
   switch (action.type) {
 
-    case TYPES.WEATHER_PENDING: {
+    case TYPES.HUKD_PENDING: {
       return {
         ...state,
         isFetching : true,
       };
     }
 
-    case TYPES.WEATHER_SUCCESS: {
+    case TYPES.HUKD_SUCCESS: {
       return {
         ...state,
         isFetching : false,
-        weather    : action.payload,
+        deals      : action.payload,
       };
     }
 
-    case TYPES.WEATHER_FAILURE: {
+    case TYPES.HUKD_FAILURE: {
       return {
         ...state,
         isFetching : false,
@@ -47,4 +43,4 @@ const today = (state: State = initialState, action: Action) => {
   }
 };
 
-export default today;
+export default hukd;

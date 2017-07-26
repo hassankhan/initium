@@ -7,7 +7,9 @@ interface WidgetBodyProps {
 
 function Body(props: WidgetBodyProps) {
   return (
-    <section className={`widget__body ${props.className}`}>{props.children}</section>
+    <section className={`widget__body ${props.className}`}>
+      {props.children}
+    </section>
   );
 }
 

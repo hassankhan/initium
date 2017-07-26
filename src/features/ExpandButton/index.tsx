@@ -1,5 +1,3 @@
-/// <reference path='../../types/velocity-react.d.ts' />
-
 import * as React from 'react';
 import * as Icon from 'react-fontawesome';
 import { VelocityComponent } from 'velocity-react';
@@ -10,6 +8,7 @@ interface ExpandButtonProps {
   animation: {
     duration?: number;
   };
+  className?: string;
   isExpanded: boolean;
   onShow: Function;
   onHide: Function;
@@ -25,6 +24,7 @@ export default class ExpandButton extends React.Component<ExpandButtonProps, Exp
     animation: {
       duration: 2000,
     },
+    className: '',
     isExpanded: true,
   };
 
@@ -44,20 +44,23 @@ export default class ExpandButton extends React.Component<ExpandButtonProps, Exp
       ? this.props.onHide
       : this.props.onShow;
 
+    handler(event);
     this.setState((prevState) => {
       return { isExpanded : !prevState.isExpanded };
-    }, handler(event));
+    });
   }
 
   render(): JSX.Element {
+
+    console.log('className', this.props.className);
 
     return (
       <VelocityComponent
         animation={{rotateZ: this.state.isExpanded ? 0 : -180}}
         duration={this.props.animation.duration}
       >
-        <Button inline={true} onClick={this.onClick}>
-          <Icon className="widget__expand" name="chevron-down" />
+        <Button className={this.props.className} inline={true} onClick={this.onClick}>
+          <Icon name="chevron-down" />
         </Button>
       </VelocityComponent>
     );

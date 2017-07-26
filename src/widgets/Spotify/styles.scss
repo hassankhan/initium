@@ -2,37 +2,7 @@ $spotify-grey: #282828;
 $spotify-green: #2fd566;
 
 .spotify {
-  background-color: $spotify-grey;
-  color: $white;
-
-  & + .react-resizable-handle::after {
-    color: $white;
-  }
-
-  &.widget {
-    border: 2px solid $spotify-green;
-  }
-
-  .widget__header {
-    border-bottom: 1px solid $spotify-green;
-  }
-
-  .widget__icon {
-    color: $spotify-green;
-  }
-
-  .button {
-    color: $white;
-
-    &:hover,
-    &:focus {
-      color: $spotify-green;
-    }
-
-    &:focus {
-      outline-color: $spotify-green;
-    }
-  }
+  @include widget($white, $white, $spotify-green, $spotify-grey);
 }
 
 .spotify__container {

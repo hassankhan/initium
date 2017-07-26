@@ -22,7 +22,8 @@
 
 .react-grid-item.react-grid-placeholder {
   background: $green;
-  border: 5px dashed $black;
+  //border: 5px dashed $black;
+  box-shadow: inset 0 0 0 5px $black;
 }
 
 .react-grid-item.react-draggable-dragging {

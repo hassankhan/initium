@@ -1,0 +1,34 @@
+@mixin widget($bgColor, $textColor, $brandColor, $headerColor: $bgColor) {
+  background-color: $bgColor;
+  color: $textColor;
+
+  & + .react-resizable-handle::after {
+    color: $textColor;
+  }
+
+  &.widget {
+    border: 2px solid $headerColor;
+  }
+
+  .widget__header {
+    background-color: $headerColor;
+    border-bottom: 1px solid $brandColor;
+  }
+
+  .widget__name {
+    color: $bgColor;
+  }
+
+  .button {
+    color: $bgColor;
+
+    &:hover,
+    &:focus {
+      color: $brandColor;
+    }
+
+    &:focus {
+      outline-color: $brandColor;
+    }
+  }
+}

@@ -1,27 +1,24 @@
-/// <reference path='../../types/velocity-react.d.ts' />
-
+import * as _ from 'lodash';
 import * as React from 'react';
-import { VelocityTransitionGroup } from 'velocity-react';
-import { connect, Dispatch } from 'react-redux';
+import { Dispatch, connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+import { VelocityTransitionGroup } from 'velocity-react';
 
 import Widget from '../../components/Widget';
-import { RootState } from '../../reducers';
-import { State as AppState } from '../../reducers/app';
+import { RootState } from '../../reducers/index';
 
-import { WeatherResult } from '../../types/openweather';
-
-import * as TodayActions from './actions';
-import { State as TodayState } from './reducer';
+import * as HukdActions from './actions';
+import { HukdDeal, HukdResult } from './types';
+import Deal from './Deal';
+const logo = require('./images/logo.svg');
 
 interface ReduxState {
-  app: AppState;
-  today: TodayState;
+  deals?: HukdResult;
 }
 
 interface ReduxProps {
-  getWeather: () => ThunkAction<Promise<WeatherResult>, RootState, null>;
+  getDeals: () => ThunkAction<Promise<HukdResult>, RootState, null>;
 }
 
 interface Props {
@@ -34,10 +31,9 @@ interface State {
   isExpanded: boolean;
 }
 
-// type CombinedProps = ReduxState & ReduxProps & Props;
 type CombinedProps = ReduxState & ReduxProps & Props;
 
-class Today extends React.Component<CombinedProps, State> {
+class Hukd extends React.Component<CombinedProps, State> {
 
   static defaultProps: Partial<CombinedProps> = {
     animation: {
@@ -51,6 +47,10 @@ class Today extends React.Component<CombinedProps, State> {
     this.state = {
       isExpanded : true,
     };
+  }
+
+  componentDidMount() {
+    return this.props.getDeals();
   }
 
   handleExpand = () => {
@@ -73,7 +73,11 @@ class Today extends React.Component<CombinedProps, State> {
         return null;
       }
 
-      return null;
+      return _.map(this.props.deals, (deal: HukdDeal) => {
+        // console.log(deal);
+
+        return (<Deal key={deal.deal_link} {...deal} />);
+      });
     };
 
     let bodyClass = 'widget__body ';
@@ -82,9 +86,9 @@ class Today extends React.Component<CombinedProps, State> {
       : 'widget__body--minimized';
 
     return (
-      <Widget className="today">
+      <Widget className="hukd">
         <Widget.Header>
-          <Widget.HeaderTitle icon="clock-o" name="Today" />
+        <Widget.HeaderTitle icon={logo} name="" />
           <Widget.HeaderOptions
             animation={this.props.animation}
             isExpanded={this.state.isExpanded}
@@ -92,14 +96,16 @@ class Today extends React.Component<CombinedProps, State> {
             onMinimize={this.handleMinimize}
           />
         </Widget.Header>
-        <VelocityTransitionGroup
-          className={bodyClass}
-          component="section"
-          enter={{animation: 'slideDown', duration: this.props.animation.duration, style: { height: '' }}}
-          leave={{animation: 'slideUp', duration: this.props.animation.duration}}
-        >
-          {renderBody(this.state.isExpanded)}
-        </VelocityTransitionGroup>
+        <Widget.Body className={bodyClass}>
+          <VelocityTransitionGroup
+            className="hukd__deal-list"
+            component="ul"
+            enter={{animation: 'slideDown', duration: this.props.animation.duration, style: { height: '' }}}
+            leave={{animation: 'slideUp', duration: this.props.animation.duration}}
+          >
+            {renderBody(this.state.isExpanded)}
+          </VelocityTransitionGroup>
+        </Widget.Body>
       </Widget>
     );
   }
@@ -107,19 +113,18 @@ class Today extends React.Component<CombinedProps, State> {
 
 const mapStateToProps = (state: RootState): ReduxState => {
   return {
-    app   : state.app,
-    today : state.today,
+    deals : state.hukd.deals,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<RootState>): ReduxProps => {
 
   return bindActionCreators({
-    getWeather : TodayActions.getWeather,
+    getDeals : HukdActions.getDeals,
   }, dispatch);
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Today);
+)(Hukd);

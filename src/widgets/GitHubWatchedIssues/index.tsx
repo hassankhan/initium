@@ -1,5 +1,3 @@
-/// <reference path='../../types/velocity-react.d.ts' />
-
 import * as _ from 'lodash';
 import * as React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
@@ -79,6 +77,31 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
         issue: 1232,
         link : 'http://google.com',
         updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 2,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 1300,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 5453,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 1213,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
+      }, {
+        repository : 'serverless/serverless',
+        issue: 12352,
+        link : 'http://google.com',
+        updatedAt: (new Date()).toISOString(),
       }], (item) => {
 
         return (<li key={`${item.repository}#${item.issue}`}><GitHubWatchedIssue {...item} /></li>);
@@ -87,7 +110,7 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
       return elements;
     };
 
-    let bodyClass = 'widget__body github-issues__list ';
+    let bodyClass = 'widget__body ';
     bodyClass += this.state.isExpanded
       ? 'widget__body--expanded'
       : 'widget__body--minimized';
@@ -105,6 +128,7 @@ export default class GitHubWatchedIssues extends React.Component<GitHubWatchedIs
         </Widget.Header>
         <Widget.Body className={bodyClass}>
           <VelocityTransitionGroup
+            className="github-issues__list"
             component="ul"
             enter={{animation: 'slideDown', duration: this.props.animation.duration, style: {height: ''}}}
             leave={{animation: 'slideUp', duration: this.props.animation.duration}}

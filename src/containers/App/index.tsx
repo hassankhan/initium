@@ -11,8 +11,9 @@ import { State as LayoutsState } from '../../reducers/layouts';
 
 import asGridItem from '../../features/asGridItem';
 
+import HotUkDeals from '../../widgets/hukd';
 import Spotify from '../../widgets/Spotify';
-import Today from '../../widgets/today';
+import Weather from '../../widgets/weather';
 import GitHubWatchedIssues from '../../widgets/GitHubWatchedIssues';
 
 import { LayoutChangeCallback } from '../../types/react-grid-layout';
@@ -67,7 +68,10 @@ class App extends React.Component<CombinedProps, State> {
 
     const GitHubWidget = asGridItem(<GitHubWatchedIssues animation={animation} />);
     const SpotifyWidget = asGridItem(<Spotify animation={animation} />);
-    const TodayWidget = asGridItem(<Today />);
+    const WeatherWidget = asGridItem(<Weather />);
+    const HotUkDealsWidget = asGridItem(<HotUkDeals />);
+
+    // const WeatherWidget2 = asGridItem(<Weather />);
 
     return (
       <div className="app">
@@ -77,13 +81,17 @@ class App extends React.Component<CombinedProps, State> {
         <section className="layout">
           <Grid
             className="layout__grid"
+            draggableHandle=".widget__header"
             layout={this.props.layouts}
             rowHeight={52}
             onLayoutChange={this.props.onLayoutChange}
+            verticalCompact={false}
           >
-            <GitHubWidget key="GitHubWatchedIssues" />
-            <SpotifyWidget key="Spotify" />
-            <TodayWidget key="Today" />
+            <GitHubWidget key="GitHubWatchedIssuesWidget" />
+            <SpotifyWidget key="SpotifyWidget" />
+            <WeatherWidget key="WeatherWidget" />
+            <HotUkDealsWidget key="HotUkDealsWidget" />
+            {/*<WeatherWidget2 key="WeatherWidget2" />*/}
           </Grid>
         </section>
       </div>

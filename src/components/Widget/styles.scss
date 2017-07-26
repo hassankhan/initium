@@ -14,10 +14,12 @@
 }
 
 .widget__settings {
-
+  cursor: pointer;
 }
 
 .widget__expand {
+
+  cursor: pointer;
 
   &--closed {
 
@@ -48,13 +50,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: move;
 
   border-bottom: 1px solid $grey;
   padding: 0.5em 0;
 
   .widget__title {
     padding-left: 1em;
-    align-items: center;
+    //align-items: center;
   }
 
   .widget__name {
@@ -64,7 +67,7 @@
 
   .widget__options {
     padding-right: 1em;
-    align-items: center;
+    //align-items: center;
   }
 
   .widget__icon {
@@ -84,7 +87,6 @@
     //height: calc(100% - 52px);
   }
 }
-
 
 .widget__footer {
   display: flex;

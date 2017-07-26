@@ -1,5 +1,3 @@
-/// <reference path='../../types/velocity-react.d.ts' />
-
 import * as React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
 
